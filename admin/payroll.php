@@ -232,6 +232,7 @@ require_once('header.php');
             <label for="Departmentname">Department Name</label>
             <input type="text" class="form-control js-name-edit" id="exampleInputPassword1" placeholder="Division Name">
           </div>
+          <input type="hidden" class="form-control js-id-edit">
         </form>
       </div>
 
@@ -245,4 +246,5 @@ require_once('header.php');
   </div>
 </div>
 
-<script src="custom/division.js"></script>
+<script src="custom/payroll.js"></script>
+<script src="custom/search.js"></script>

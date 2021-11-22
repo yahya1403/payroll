@@ -1,15 +1,14 @@
 
 $(document).ready(function () {
     //Add
-    $('.js-btndiv-add').on("click", function () {
+    $('.js-btn-add').on("click", function () {
         // ajax
         $.ajax({
             type: "POST",
-            url: "custom/div_add.php",
+            url: "custom/dep_add.php",
             data: {
-                'code': $('.js-division-add').val(),
+                'code': $('.js-dep-add').val(),
                 'name': $('.js-name-add').val(),
-                'acc_code': $('.js-acc-add').val(),
             },
             success: function (res) {
                 alert(res);
@@ -19,10 +18,9 @@ $(document).ready(function () {
 
     });
     //select
-    $('.js-division-edit').on("click", function () {
-        $('.js-divi-edit').val($(this).closest('tr').children('td')[1].innerText);
+    $('.js-btn-select').on("click", function () {
+        $('.js-dep-edit').val($(this).closest('tr').children('td')[1].innerText);
         $('.js-name-edit').val($(this).closest('tr').children('td')[2].innerText);
-        $('.js-acc-edit').val($(this).closest('tr').children('td')[3].innerText);
         $('.js-id-edit').val($(this).attr('data-id'));
 
     });
@@ -31,12 +29,11 @@ $(document).ready(function () {
         // ajax
         $.ajax({
             type: "POST",
-            url: "custom/div_update.php",
+            url: "custom/dep_update.php",
             data: {
                 'id': $('.js-id-edit').val(),
-                'code': $('.js-divi-edit').val(),
+                'code': $('.js-dep-edit').val(),
                 'name': $('.js-name-edit').val(),
-                'acc_code': $('.js-acc-edit').val(),
             },
             success: function (res) {
                 alert(res);
@@ -45,12 +42,12 @@ $(document).ready(function () {
         });
     });
     //delete
-    $('.js-btndiv-delete').on("click", function () {
+    $('.js-btn-delete').on("click", function () {
         if (confirm('Are you sure you want to delete into the database?')) {
             // ajax
             $.ajax({
                 type: "POST",
-                url: "custom/div_delete.php",
+                url: "custom/dep_delete.php",
                 data: {
                     'id': $(this).attr('data-id'),
                 },

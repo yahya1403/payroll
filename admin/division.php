@@ -1,6 +1,8 @@
 <?php
 require_once('../db/config.php');
 require_once('header.php');
+$sql = "SELECT * FROM division";
+$result = mysqli_query($conn, $sql);
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -60,30 +62,21 @@ require_once('header.php');
 <table class="table">
   <thead><tr><th>S.No</th><th>Division Code</th><th>Division Name</th><th>Account Code</th><th>Action</th></tr></thead>
   <tbody id="myTable">
+  <?php 
+  $sno=1;
+    while($row = mysqli_fetch_assoc($result)) {
+      ?>
       <tr>
-      <td>1</td>
-        <td>Div1</td>
-        <td>division one</td>
-        <td>Acc1</td>
-        <td><button class="btn btn-primary js-division-edit" data-toggle="modal" data-target="#myModaledit"><i class="fas fa-edit"></i></button>
-        <button class="btn btn-danger js-btndiv-delete"><i class="fas fa-trash"></i></button></td>
+      <td><?php echo $sno++; ?></td>
+        <td><?php echo $row['div_code']; ?></td>
+        <td><?php echo $row['div_name']; ?></td>
+        <td><?php echo $row['acc_code']; ?></td>
+        <td><button data-id="<?php echo $row['id']; ?>" class="btn btn-primary js-division-edit" data-toggle="modal" data-target="#myModaledit"><i class="fas fa-edit"></i></button>
+        <button data-id="<?php echo $row['id']; ?>" class="btn btn-danger js-btndiv-delete"><i class="fas fa-trash"></i></button></td>
       </tr>
-      <tr>
-      <td>2</td>
-        <td>Div2</td>
-        <td>division two</td>
-        <td>Acc2</td>
-        <td><button class="btn btn-primary js-division-edit" data-toggle="modal" data-target="#myModaledit"><i class="fas fa-edit"></i></button>
-        <button class="btn btn-danger js-btndiv-delete"><i class="fas fa-trash"></i></button></td>
-      </tr>
-      <tr>
-      <td>3</td>
-        <td>Div3</td>
-        <td>division three</td>
-        <td>Acc3</td>
-        <td><button class="btn btn-primary js-division-edit" data-toggle="modal" data-target="#myModaledit"><i class="fas fa-edit"></i></button>
-        <button class="btn btn-danger js-btndiv-delete"><i class="fas fa-trash"></i></button></td>
-      </tr>
+      <?php 
+    }
+  ?>
     </tbody>
   </table>
 </div>
@@ -101,7 +94,7 @@ require_once('header.php');
 
       <!-- Modal body -->
       <div class="modal-body">
-          <form>
+          <form method="post" class="js-add-form">
           <div class="form-group">
             <label for="divisioncode">Division Code</label>
             <input type="text" class="form-control js-division-add" id="exampleInputEmail1" placeholder="Division code">
@@ -143,7 +136,7 @@ require_once('header.php');
           <form>
             <div class="form-group">
               <label for="divisioncode">Division Code</label>
-              <input type="text" class="form-control js-division-edit" id="exampleInputEmail1" placeholder="Division code">
+              <input type="text" class="form-control js-divi-edit" id="exampleInputEmail1" placeholder="Division code">
             </div>
             <div class="form-group">
               <label for="divisionname">Division Name</label>
@@ -152,6 +145,7 @@ require_once('header.php');
             <div class="form-group">
               <label for="accountcode">Account Code</label>
               <input type="text" class="form-control js-acc-edit" id="exampleInputPassword1" placeholder="Acoount Code">
+              <input type="hidden" class="form-control js-id-edit" id="exampleInputPassword1" placeholder="Acoount Code">
             </div>
           </form>
       </div>
@@ -167,3 +161,4 @@ require_once('header.php');
 </div>
 
 <script src="custom/division.js"></script>
+<script src="custom/search.js"></script>

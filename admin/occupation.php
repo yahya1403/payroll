@@ -140,6 +140,7 @@ require_once('header.php');
           </div>
           <div class="form-group">
             <label for="Occupationname">Occupation Name</label>
+            <input type="hidden" class="form-control js-id-edit">
             <input type="text" class="form-control js-name-edit" id="exampleInputPassword1" placeholder="Division Name">
           </div>
         </form>
@@ -155,4 +156,5 @@ require_once('header.php');
   </div>
 </div>
 
-<script src="custom/division.js"></script>
+<script src="custom/occupation.js"></script>
+<script src="custom/search.js"></script>

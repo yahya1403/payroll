@@ -1,6 +1,8 @@
 <?php
 require_once('../db/config.php');
 require_once('header.php');
+$sql = "SELECT * FROM department";
+$result = mysqli_query($conn, $sql);
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -60,27 +62,21 @@ require_once('header.php');
 <table class="table">
   <thead><tr><th>S.No</th><th>Department Code</th><th>Department Name</th><th>Action</th></tr></thead>
   <tbody id="myTable">
+  <?php 
+  $sno=1;
+    while($row = mysqli_fetch_assoc($result)) {
+      ?>
       <tr>
-      <td>1</td>
-        <td>Department1</td>
-        <td>division one</td>
-        <td><button class="btn btn-primary js-division-edit" data-toggle="modal" data-target="#myModaledit"><i class="fas fa-edit"></i></button>
-        <button class="btn btn-danger js-btndiv-delete"><i class="fas fa-trash"></i></button></td>
+      <td><?php echo $sno++; ?></td>
+        <td><?php echo $row['dep_code']; ?></td>
+        <td><?php echo $row['dep_name']; ?></td>
+        <td><button data-id="<?php echo $row['id']; ?>" class="btn btn-primary js-btn-select" data-toggle="modal" data-target="#myModaledit"><i class="fas fa-edit"></i></button>
+        <button data-id="<?php echo $row['id']; ?>" class="btn btn-danger js-btn-delete"><i class="fas fa-trash"></i></button></td>
       </tr>
-      <tr>
-      <td>2</td>
-        <td>Department2</td>
-        <td>division two</td>
-        <td><button class="btn btn-primary js-division-edit" data-toggle="modal" data-target="#myModaledit"><i class="fas fa-edit"></i></button>
-        <button class="btn btn-danger js-btndiv-delete"><i class="fas fa-trash"></i></button></td>
-      </tr>
-      <tr>
-      <td>3</td>
-        <td>Department3</td>
-        <td>division three</td>
-        <td><button class="btn btn-primary js-division-edit" data-toggle="modal" data-target="#myModaledit"><i class="fas fa-edit"></i></button>
-        <button class="btn btn-danger js-btndiv-delete"><i class="fas fa-trash"></i></button></td>
-      </tr>
+      <?php 
+    }
+  ?>
+
     </tbody>
   </table>
 </div>
@@ -113,7 +109,7 @@ require_once('header.php');
       <!-- Modal footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-success js-btndiv-add" data-dismiss="modal">Add</button>
+        <button type="button" class="btn btn-success js-btn-add" data-dismiss="modal">Add</button>
       </div>
 
     </div>
@@ -141,6 +137,8 @@ require_once('header.php');
           <div class="form-group">
             <label for="Departmentname">Department Name</label>
             <input type="text" class="form-control js-name-edit" id="exampleInputPassword1" placeholder="Division Name">
+          
+            <input type="hidden" class="form-control js-id-edit" id="exampleInputPassword1" placeholder="Acoount Code">
           </div>
         </form>
       </div>
@@ -155,4 +153,6 @@ require_once('header.php');
   </div>
 </div>
 
-<script src="custom/division.js"></script>
+
+<script src="custom/department.js"></script>
+<script src="custom/search.js"></script>

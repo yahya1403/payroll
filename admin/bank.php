@@ -162,6 +162,7 @@ require_once('header.php');
             </div>
             <div class="form-group">
                 <label for="bspcode">Account Number</label>
+                <input type="hidden" class="form-control js-id-edit">
                 <input type="text" class="form-control js-acn-edit" id="exampleInputPassword1" placeholder="Acoount Number">
             </div>
             </form>
@@ -177,4 +178,5 @@ require_once('header.php');
   </div>
 </div>
 
-<script src="custom/division.js"></script>
+<script src="custom/bank.js"></script>
+<script src="custom/search.js"></script>
