@@ -59,7 +59,7 @@ $result = mysqli_query($conn, $sql);
         <input class="form-control" id="myInput" type="text" placeholder="Search..">
         </div>
     </div>
-<table class="table">
+<table class="table"> 
   <thead><tr><th>S.No</th><th>Department Code</th><th>Department Name</th><th>Action</th></tr></thead>
   <tbody id="myTable">
   <?php 

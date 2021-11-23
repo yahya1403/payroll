@@ -1,6 +1,8 @@
 <?php
 require_once('../db/config.php');
 require_once('header.php');
+$sql = "SELECT * FROM branch";
+$result = mysqli_query($conn, $sql);
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -60,33 +62,23 @@ require_once('header.php');
 <table class="table">
   <thead><tr><th>S.No</th><th>Branch Code</th><th>Branch Name</th><th>Account Code</th><th>BSP Code</th><th>Action</th></tr></thead>
   <tbody id="myTable">
+  <?php 
+  $sno=1;
+    while($row = mysqli_fetch_assoc($result)) {
+      ?>
       <tr>
-      <td>1</td>
-        <td>Div1</td>
-        <td>Branch one</td>
-        <td>Acc1</td>
-        <td>bsp1</td>
-        <td><button class="btn btn-primary js-division-edit" data-toggle="modal" data-target="#myModaledit"><i class="fas fa-edit"></i></button>
-        <button class="btn btn-danger js-btndiv-delete"><i class="fas fa-trash"></i></button></td>
+      <td><?php echo $sno++; ?></td>
+        <td><?php echo $row['branch_name']; ?></td>
+        <td><?php echo $row['branch_code']; ?></td>
+        <td><?php echo $row['acc_code']; ?></td>
+        <td><?php echo $row['bsp_code']; ?></td>
+        <td><button data-id="<?php echo $row['id']; ?>" class="btn btn-primary js-btn-select" data-toggle="modal" data-target="#myModaledit"><i class="fas fa-edit"></i></button>
+        <button data-id="<?php echo $row['id']; ?>" class="btn btn-danger js-btn-delete"><i class="fas fa-trash"></i></button></td>
       </tr>
-      <tr>
-      <td>2</td>
-        <td>Div2</td>
-        <td>Branch two</td>
-        <td>Acc2</td>
-        <td>bsp2</td>
-        <td><button class="btn btn-primary js-division-edit" data-toggle="modal" data-target="#myModaledit"><i class="fas fa-edit"></i></button>
-        <button class="btn btn-danger js-btndiv-delete"><i class="fas fa-trash"></i></button></td>
-      </tr>
-      <tr>
-      <td>3</td>
-        <td>Div3</td>
-        <td>Branch three</td>
-        <td>Acc3</td>
-        <td>bsp2</td>
-        <td><button class="btn btn-primary js-division-edit" data-toggle="modal" data-target="#myModaledit"><i class="fas fa-edit"></i></button>
-        <button class="btn btn-danger js-btndiv-delete"><i class="fas fa-trash"></i></button></td>
-      </tr>
+      <?php 
+    }
+  ?>
+
     </tbody>
   </table>
 </div>
@@ -127,7 +119,7 @@ require_once('header.php');
       <!-- Modal footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-success js-btndiv-add" data-dismiss="modal">Add</button>
+        <button type="button" class="btn btn-success js-btn-add" data-dismiss="modal">Add</button>
       </div>
 
     </div>
