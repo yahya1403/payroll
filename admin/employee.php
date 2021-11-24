@@ -110,7 +110,7 @@ require_once('header.php');
 
 <!-- The Modal for Add -->
 <div class="modal" id="myModal">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-xl">
     <div class="modal-content">
 
       <!-- Modal Header -->
@@ -122,78 +122,96 @@ require_once('header.php');
       <!-- Modal body -->
       <div class="modal-body">
           <form>
-          <div class="form-group">
+        <div class="row">
+          <div class="form-group col-6">
             <label for="">Employee Code</label>
             <input type="text" class="form-control js-empcode-add" id="exampleInputEmail1" placeholder="Employee code">
           </div>
-          <div class="form-group">
+          <div class="form-group col-6">
             <label for="">First Name</label>
             <input type="text" class="form-control js-fname-add" id="exampleInputPassword1" placeholder="First Name">
           </div>
-          <div class="form-group">
+        </div>
+        <div class="row">
+          <div class="form-group col-6">
             <label for="">Surname</label>
             <input type="text" class="form-control js-sur-add" id="exampleInputPassword1" placeholder="Surname">
           </div>
-          <div class="form-group">
-            <label for="">Gender</label>
-            <input type="radio" class="js-gender-add" name="gender" value="male">Male
+          <div class="form-group col-6">
+            <label for="">Gender</label><br/>
+            <input type="radio" class="js-gender-add" name="gender" value="male" checked>Male
             <input type="radio" class="js-gender-add" name="gender" value="female">Female
           </div>
-          <div class="form-group">
+        </div>
+        <div class="row">
+          <div class="form-group col-6">
             <label for="">Division/Company Name</label>
-            <input type="text" class="form-control js-div-add" id="exampleInputPassword1" placeholder="Division">
+            <select class="form-control js-div-add"></select>
           </div>
-          <div class="form-group">
+          <div class="form-group col-6">
             <label for="">Department</label>
-            <input type="text" class="form-control js-dep-add" id="exampleInputPassword1" placeholder="Department">
+            <select class="form-control js-dep-add"></select>
           </div>
-          <div class="form-group">
+          </div>
+        <div class="row">
+          <div class="form-group col-6">
             <label for="">Occupation</label>
-            <input type="text" class="form-control js-occu-add" id="exampleInputPassword1" placeholder="Occupation">
+            <select class="form-control js-occu-add"></select>
           </div>
-          <div class="form-group">
+          <div class="form-group col-6">
             <label for="">Branch</label>
-            <input type="text" class="form-control js-branch-add" id="exampleInputPassword1" placeholder="Branch">
+            <select class="form-control js-branch-add"></select>
           </div>
-          <div class="form-group">
+          </div>
+        <div class="row">
+          <div class="form-group col-6">
             <label for="">D.O.B</label>
             <input type="date" class="form-control js-sur-add" id="exampleInputPassword1" placeholder="Date of Birth">
           </div>
-          <div class="form-group">
+          <div class="form-group col-6">
             <label for="">Date of join</label>
             <input type="date" class="form-control js-sur-add" id="exampleInputPassword1" placeholder="Date of join">
           </div>
-          <div class="form-group">
+          </div>
+        <div class="row">
+          <div class="form-group col-6">
             <label for="">Mobile Number</label>
             <input type="text" class="form-control js-phone-add" id="exampleInputPassword1" placeholder="Mobile Number">
           </div>
-          <div class="form-group">
+          <div class="form-group col-6">
             <label for="">Address</label>
             <textarea cols="5" rows="3" class="form-control js-address-add" id="exampleInputPassword1" placeholder="Address"></textarea>
           </div>
-          <div class="form-group">
+          </div>
+        <div class="row">
+          <div class="form-group col-6">
             <label for="">Basic Pay/hr</label>
             <input type="text" class="form-control js-basic-add" id="exampleInputPassword1" placeholder="Basic pay/hr">
           </div>
-          <div class="form-group">
+          <div class="form-group col-6">
             <label for="">Income tax %</label>
             <input type="text" class="form-control js-income-add" id="exampleInputPassword1" placeholder="Income tax %">
           </div>
-          <div class="form-group">
+          </div>
+        <div class="row">
+          <div class="form-group col-6">
             <label for="">NPF</label>
             <input type="text" class="form-control js-npf-add" id="exampleInputPassword1" placeholder="NPF">
           </div>
-          <div class="form-group">
+          <div class="form-group col-6">
             <label for="">NPF %</label>
             <input type="text" class="form-control js-npf%-add" id="exampleInputPassword1" placeholder="NPF %">
           </div>
-          <div class="form-group">
+          </div>
+        <div class="row">
+          <div class="form-group col-6">
             <label for="">NPF Number</label>
             <input type="text" class="form-control js-npfno-add" id="exampleInputPassword1" placeholder="NPF Number">
           </div>
-          <div class="form-group">
+          <div class="form-group col-6">
             <label for="">Employee Type</label>
             <input type="text" class="form-control js-emptype-add" id="exampleInputPassword1" placeholder="Employee type">
+          </div>
           </div>
         </form>
       </div>
