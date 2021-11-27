@@ -1,8 +1,9 @@
 <?php
 require_once('../db/config.php');
 require_once('header.php');
+$sql = "SELECT bank_details.*,employee.emp_code as ecode FROM bank_details,employee WHERE bank_details.emp_code=employee.id";
+$result = mysqli_query($conn, $sql);
 ?>
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
@@ -60,33 +61,23 @@ require_once('header.php');
 <table class="table">
   <thead><tr><th>S.No</th><th>Employee Code</th><th>Bank Code</th><th>Branch Code</th><th>Account Number</th><th>Action</th></tr></thead>
   <tbody id="myTable">
+  <?php 
+  $sno=1;
+    while($row = mysqli_fetch_assoc($result)) {
+      ?>
       <tr>
-      <td>1</td>
-        <td>Employee1</td>
-        <td>Bank1</td>
-        <td>Branch one</td>
-        <td>1231</td>
-        <td><button class="btn btn-primary js-division-edit" data-toggle="modal" data-target="#myModaledit"><i class="fas fa-edit"></i></button>
-        <button class="btn btn-danger js-btndiv-delete"><i class="fas fa-trash"></i></button></td>
+      <td><?php echo $sno++; ?></td>
+        <td><?php echo $row['ecode']; ?></td>
+        <td><?php echo $row['bank_code']; ?></td>
+        <td><?php echo $row['branch_code']; ?></td>
+        <td><?php echo $row['acc_number']; ?></td>
+        <td><button data-id="<?php echo $row['id']; ?>" class="btn btn-primary js-btn-select" data-toggle="modal" data-target="#myModaledit"><i class="fas fa-edit"></i></button>
+        <button data-id="<?php echo $row['id']; ?>" class="btn btn-danger js-btn-delete"><i class="fas fa-trash"></i></button></td>
       </tr>
-      <tr>
-      <td>2</td>
-        <td>Div2</td>
-        <td>Bank2</td>
-        <td>Branch two</td>
-        <td>3232</td>
-        <td><button class="btn btn-primary js-division-edit" data-toggle="modal" data-target="#myModaledit"><i class="fas fa-edit"></i></button>
-        <button class="btn btn-danger js-btndiv-delete"><i class="fas fa-trash"></i></button></td>
-      </tr>
-      <tr>
-      <td>3</td>
-        <td>Div3</td>
-        <td>Bank3</td>
-        <td>Branch three</td>
-        <td>4323</td>
-        <td><button class="btn btn-primary js-division-edit" data-toggle="modal" data-target="#myModaledit"><i class="fas fa-edit"></i></button>
-        <button class="btn btn-danger js-btndiv-delete"><i class="fas fa-trash"></i></button></td>
-      </tr>
+      <?php 
+    }
+  ?>
+
     </tbody>
   </table>
 </div>
@@ -107,7 +98,7 @@ require_once('header.php');
           <form>
           <div class="form-group">
             <label for="Employee Code">Employee Code</label>
-            <input type="text" class="form-control js-employee-add" id="exampleInputEmail1" placeholder="Employee code">
+            <select class="form-control js-employee-add"></select>
           </div>
           <div class="form-group">
             <label for="Bank Code">Bank Code</label>
@@ -127,7 +118,7 @@ require_once('header.php');
       <!-- Modal footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-success js-btndiv-add" data-dismiss="modal">Add</button>
+        <button type="button" class="btn btn-success js-btn-add" data-dismiss="modal">Add</button>
       </div>
 
     </div>
@@ -150,7 +141,7 @@ require_once('header.php');
             <form>
             <div class="form-group">
                 <label for="Employee Code">Employee Code</label>
-                <input type="text" class="form-control js-employee-edit" id="exampleInputEmail1" placeholder="Employee code">
+            <select class="form-control js-employee-edit"></select>
             </div>
             <div class="form-group">
                 <label for="Bank Code">Bank Code</label>

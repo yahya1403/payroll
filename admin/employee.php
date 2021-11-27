@@ -128,8 +128,8 @@ $result = mysqli_query($conn, $sql);
           </div>
           <div class="form-group col-6">
             <label for="">Gender</label><br/>
-            <input type="radio" class="js-gender-add" name="gender" value="male" checked>Male
-            <input type="radio" class="js-gender-add" name="gender" value="female">Female
+            <input type="radio" class="js-gender-add" name="agender" value="male" checked>Male
+            <input type="radio" class="js-gender-add" name="agender" value="female">Female
           </div>
         </div>
         <div class="row">
@@ -217,7 +217,7 @@ $result = mysqli_query($conn, $sql);
 
 <!-- The Modal for Edit-->
 <div class="modal" id="myModaledit">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-xl">
     <div class="modal-content">
 
       <!-- Modal Header -->
@@ -232,6 +232,7 @@ $result = mysqli_query($conn, $sql);
       <div class="row">
         <div class="form-group col-6">
           <label for="">Employee Code</label>
+          <input type="hidden" class="form-control js-id-edit">
           <input type="text" class="form-control js-empcode-edit" id="exampleInputEmail1" placeholder="Employee code">
         </div>
         <div class="form-group col-6">
@@ -246,8 +247,8 @@ $result = mysqli_query($conn, $sql);
         </div>
         <div class="form-group col-6">
           <label for="">Gender</label><br/>
-          <input type="radio" class="js-m-edit" name="gender" value="male">Male
-          <input type="radio" class="js-f-edit" name="gender" value="female">Female
+          <input type="radio" class="js-m-edit" name="egender" value="male">Male
+          <input type="radio" class="js-f-edit" name="egender" value="female">Female
         </div>
       </div>
       <div class="row">
